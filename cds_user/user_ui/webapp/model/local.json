@@ -1,0 +1,9 @@
+{
+	"User": {
+		"UserId": "1000000004",
+		"FirstName": "John",
+		"LastName": "Doe",
+		"Email": "john.doe@unknown.com"
+	},
+	"SelectedUserPath": ""
+}

@@ -1,0 +1,35 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns:html="http://www.w3.org/1999/xhtml" xmlns="sap.m" controllerName="user_ui.user_ui.controller.UserForm" displayBlock="true">
+	<App id="idAppControl">
+		<pages>
+			<Page title="{i18n>userForm}">
+				<content>
+				    <sap.ui.layout.form:SimpleForm xmlns:sap.ui.layout.form="sap.ui.layout.form" xmlns:sap.ui.core="sap.ui.core" editable="true" layout="ResponsiveGridLayout" id="form0">
+				        <sap.ui.layout.form:content>
+				            <sap.ui.core:Title id="title0" text="{i18n>user}"/>
+				            <Label text="{i18n>userId}" id="label0"/>
+				            <Input width="100%" id="input0" value="{local>/User/UserId}" type="Number"/>
+				            <Label id="label1" text="{i18n>firstName}"/>
+				            <Input width="100%" id="input1" value="{local>/User/FirstName}"/>
+				            <Label xmlns:mvc="sap.ui.core.mvc" xmlns:html="http://www.w3.org/1999/xhtml" xmlns="sap.m" xmlns:sap.ui.layout.form="sap.ui.layout.form" xmlns:sap.ui.core="sap.ui.core" id="label2" text="{i18n>lastName}"/>
+				            <Input xmlns:mvc="sap.ui.core.mvc" xmlns:html="http://www.w3.org/1999/xhtml" xmlns="sap.m" xmlns:sap.ui.layout.form="sap.ui.layout.form" xmlns:sap.ui.core="sap.ui.core" width="100%" id="input2" value="{local>/User/LastName}"/>
+				            <Label xmlns:mvc="sap.ui.core.mvc" xmlns:html="http://www.w3.org/1999/xhtml" xmlns="sap.m" xmlns:sap.ui.layout.form="sap.ui.layout.form" xmlns:sap.ui.core="sap.ui.core" id="label3" text="{i18n>email}"/>
+				            <Input xmlns:mvc="sap.ui.core.mvc" xmlns:html="http://www.w3.org/1999/xhtml" xmlns="sap.m" xmlns:sap.ui.layout.form="sap.ui.layout.form" xmlns:sap.ui.core="sap.ui.core" width="100%" id="input3" value="{local>/User/Email}"/></sap.ui.layout.form:content>
+				    </sap.ui.layout.form:SimpleForm>
+				    <List noDataText="Drop list items here" items="{/Users}" id="list0" mode="SingleSelectMaster" selectionChange="onSelectionChange">
+				        <items>
+				            <StandardListItem type="Active" id="item0" title="{UserId} {FirstName} {LastName}" description="{Email}"/>
+				        </items>
+				    <headerToolbar>
+				        <Toolbar width="100%" id="toolbar1">
+				            <content>
+				                <Button xmlns="sap.m" id="button0" text="{i18n>create}" press="onCreate"/>
+				                <Button xmlns="sap.m" id="button1" text="{i18n>delete}" press="onDelete"/>
+				            </content>
+				        </Toolbar>
+				    </headerToolbar>
+				    </List>
+				</content>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

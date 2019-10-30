@@ -1,0 +1,51 @@
+ID: cds_user
+_schema-version: '2.1'
+version: 0.0.1
+modules:
+  - name: user_db
+    type: hdb
+    path: user_db
+    requires:
+      - name: hdi_user_db
+  - name: user_js
+    type: nodejs
+    path: user_js
+    provides:
+      - name: user_js_api
+        properties:
+          url: '${default-url}'
+    requires:
+      - name: user_db
+      - name: hdi_user_db
+  - name: user_ui
+    type: html5
+    path: user_ui
+    parameters:
+      disk-quota: 256M
+      memory: 256M
+    build-parameters:
+      builder: grunt
+    requires:
+      - name: uaa_cds_user
+      - name: dest_cds_user
+      - name: user_js_api
+        group: destinations
+        properties:
+          name: user_js_be
+          url: '~{url}'
+resources:
+  - name: hdi_user_db
+    properties:
+      hdi-container-name: '${service-name}'
+    type: com.sap.xs.hdi-container
+  - name: uaa_cds_user
+    parameters:
+      path: ./xs-security.json
+      service-plan: application
+      service: xsuaa
+    type: org.cloudfoundry.managed-service
+  - name: dest_cds_user
+    parameters:
+      service-plan: lite
+      service: destination
+    type: org.cloudfoundry.managed-service
